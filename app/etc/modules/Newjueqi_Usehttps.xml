@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+
+<config>
+    <modules>
+        <Newjueqi_Usehttps>
+            <active>true</active>
+            <codePool>community</codePool>
+        </Newjueqi_Usehttps>
+    </modules>
+</config>
+
