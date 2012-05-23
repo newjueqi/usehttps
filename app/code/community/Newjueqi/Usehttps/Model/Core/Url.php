@@ -26,15 +26,20 @@ class Newjueqi_Usehttps_Model_Core_Url extends Mage_Core_Model_Url
                       if main page is http, but ajax request send in this page is https, then ajax request will fail also
             
         */
-        if( isset($_SERVER['SERVER_PORT']) && 443==$_SERVER['SERVER_PORT'] ){
-           //if it has set $routeParams,then add  '_secure' => true
-           if( is_array($routeParams) && !isset($routeParams['_secure']) ){
-             $routeParams['_secure']=true;
-           }else{      
-              //set $routeParams to use https
-              $routeParams=array('_secure'=>true);
-           }
-        }     
+	//use https
+	if( isset($_SERVER['SERVER_PORT']) && 443==$_SERVER['SERVER_PORT'] ){
+	    //if it has set $routeParams,then add  '_secure' => true
+	    if( is_array($routeParams) ){
+		if( !isset($routeParams['_secure']) ){
+			$routeParams['_secure']=true;
+		}
+		
+	    }else{       	
+		//set $routeParams to use https
+		$routeParams=array('_secure'=>true);
+	    }
+	}
+     
         return parent::getUrl($routePath,$routeParams);
       
     }
